@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="./scripts/script.js" defer></script>
     <title>TicTacToe</title>
 </head>
 <body>
-    
+    <header class="header">
+        <h1>Tic Tac Toe</h1>
+    </header>
+    <main class="content">
+        <div class="modal-wrapper">
+            <form class="modal">
+                <label for="player1-field">Player One's name</label>
+                <input type="text" id="player1-field" maxlength="20">
+                <label for="player2-field">Player Two's name</label>
+                <input type="text" id="player2-field" maxlength="20">
+                <button class="submit-btn" type="submit">Start</button>
+            </form>
+        </div>
+        <div class="board-wrapper">
+            <div class="board">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

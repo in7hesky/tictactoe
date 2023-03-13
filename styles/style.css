@@ -1,3 +1,92 @@
+:root {
+    --header-height: 10vh;
+    --cell-dimension: 200px;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+.header {
+    user-select: none;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+}
+
+.content > * {
+    height: 100%;
+}
+
+.modal-wrapper {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.modal {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    padding: 10px 20px;
+    max-width: 400px;
+    margin: auto;
+    padding-top: 15vh;
+    font-size: 1.5rem;
+}
+
+.modal > input, .submit-btn {
+
+    font-size: 1.5rem;
+}
+
+input {
+    outline: none;
+}
+
+input, button {
+    border: 1px solid grey;
+}
+
+.submit-btn {
+    margin-top: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.board-wrapper {
+    padding-top: 60px;
+}
+
+.board {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: fit-content;
+    margin: auto;
+    background-color: grey;
+}
+
+.cell {
+    background-color: white;
+    width: var(--cell-dimension);
+    height: var(--cell-dimension);
+    cursor: pointer;
 }
