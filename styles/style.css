@@ -15,10 +15,10 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
+    user-select: none;
 }
 
 .header {
-    user-select: none;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -89,4 +89,8 @@ input, button {
     width: var(--cell-dimension);
     height: var(--cell-dimension);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
 }
