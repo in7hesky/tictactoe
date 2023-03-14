@@ -18,6 +18,12 @@ body {
     user-select: none;
 }
 
+table, tr, td, th {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
 .header {
     height: 10vh;
     display: flex;
@@ -70,8 +76,19 @@ input, button {
     text-transform: uppercase;
 }
 
-.board-wrapper {
-    padding-top: 60px;
+.play-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.playfield { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0 60px;
+    height: 100%;
 }
 
 .board {
@@ -80,7 +97,6 @@ input, button {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     width: fit-content;
-    margin: auto;
     background-color: grey;
 }
 
@@ -88,9 +104,88 @@ input, button {
     background-color: white;
     width: var(--cell-dimension);
     height: var(--cell-dimension);
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 6rem;
+    transition: all 0.1s;
+}
+
+.cell.active {
+    cursor: pointer;
+}
+
+.cell.active:active {
+    background-color: rgb(248, 248, 248);
+}
+
+.scoretable {
+    padding: 8px;
+    font-size: 1.5rem;
+    position: absolute;
+    text-align: left;
+    top: 60px;
+    right: 5px;
+    box-shadow: 1px 1px 2px rgb(209, 209, 209);
+    border-spacing: 0px;
+}
+
+.scoretable tr {
+    padding: 0 5px 0 5px;
+    min-width: 180px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-header th {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+th.score {
+    text-align: right;
+}
+
+.player-one-row, .player-two-row {
+    transition: all 0.1s; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-player {
+    background-color:rgb(233, 233, 233);
+    border: none;
+}
+
+.score {
+    text-align: right;
+}
+
+.announcer {
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.announcer.open {
+    opacity: 1;
+}
+
+@media (max-width: 1020px) {
+    :root {
+        --cell-dimension: min(30vw, 20vh);
+    }
+    .scoretable {
+        position: static;
+    }
+
+    .playfield {
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 0px 0 50px;
+    }
 }

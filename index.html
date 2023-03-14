@@ -12,6 +12,8 @@
     <script src="./scripts/board.js" type="module" defer></script>
     <script src="./scripts/playerFactory.js" type="module" defer></script>
     <script src="./scripts/controllerFactory.js" type="module" defer></script>
+    <script src="./scripts/display.js" type="module" defer></script>
+    <script src="./scripts/scoretable.js" type="module" defer></script>
     <title>TicTacToe</title>
 </head>
 <body>
@@ -28,8 +30,25 @@
                 <button class="submit-btn" type="submit">Start</button>
             </form>
         </div>
-        <div class="board-wrapper">
-            <div class="board">
+        <div class="play-wrapper">
+            <div class="playfield">
+                <table class="scoretable">
+                    <tr class="table-header">
+                        <th class="name">Name</th>
+                        <th class="score">Score</th>
+                    </tr>
+                    <tr class="player-one-row current-player">
+                        <td class="name"></td>
+                        <td class="score"></td>
+                    </tr>
+                    <tr class="player-two-row">
+                        <td class="name"></td>
+                        <td class="score"></td>
+                    </tr>
+                </table>
+                <div class="board">
+                </div>
+                <div class="announcer">default</div>
             </div>
         </div>
     </main>

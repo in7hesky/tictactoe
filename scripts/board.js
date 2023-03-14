@@ -1,3 +1,5 @@
+import scoretable from "./scoretable.js"
+
 const board = (() => {
     let cells
 
@@ -11,12 +13,32 @@ const board = (() => {
 
     const markCell = (index, symbol) => {
         cells[index] = symbol
-        document.querySelector(`.cell[data-index='${index}']`).innerHTML = 
-            `<div>${symbol}</div>`
+        const cellNode = document.querySelector(`.cell[data-index='${index}']`)
+        cellNode.innerHTML = `<div>${symbol}</div>`
+        return checkWin()
     }
 
     const getCellNodes = () => {
         return document.querySelectorAll(".cell")
+    }
+
+    const checkWin = () => {
+        if (cells[0] !== null && cells[1] === cells[0] && cells[2] === cells[1] ||
+            cells[3] !== null && cells[4] === cells[3] && cells[4] === cells[5] ||
+            cells[6] !== null && cells[7] === cells[6] && cells[8] === cells[7] ||
+            cells[0] !== null && cells[3] === cells[0] && cells[6] === cells[3] ||
+            cells[1] !== null && cells[4] === cells[1] && cells[7] === cells[4] ||
+            cells[2] !== null && cells[5] === cells[2] && cells[8] === cells[5] ||
+            cells[0] !== null && cells[4] === cells[0] && cells[8] === cells[4] ||
+            cells[2] !== null && cells[4] === cells[2] && cells[6] === cells[4]) {
+            return 1
+        } else if (cells[0] !== null && cells[1] !== null && cells[2] !== null &&
+            cells[3] !== null && cells[4] !== null && cells[5] !== null &&
+            cells[6] !== null && cells[7] !== null && cells[8] !== null) {
+            return 0
+        } else {
+            return -1
+        }
     }
 
     const createCells = () => {
@@ -25,6 +47,7 @@ const board = (() => {
 
             const cellNode = document.createElement("div")
             cellNode.classList.add("cell")
+            cellNode.classList.add("active")
             cellNode.setAttribute("data-index", i)
             document.querySelector(".board").appendChild(cellNode)
         }
