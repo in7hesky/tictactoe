@@ -8,12 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="./scripts/script.js" type="module" defer></script>
+    <script src="./scripts/runner.js" type="module" defer></script>
     <script src="./scripts/board.js" type="module" defer></script>
     <script src="./scripts/playerFactory.js" type="module" defer></script>
     <script src="./scripts/controllerFactory.js" type="module" defer></script>
     <script src="./scripts/display.js" type="module" defer></script>
     <script src="./scripts/scoretable.js" type="module" defer></script>
+    <script src="./scripts/modal.js" type="module" defer></script>
+
     <title>TicTacToe</title>
 </head>
 <body>
@@ -23,14 +25,14 @@
     <main class="content">
         <div class="modal-wrapper">
             <form class="modal">
-                <label for="player1-field">Player One's name</label>
-                <input type="text" id="player1-field" maxlength="20">
-                <label for="player2-field">Player Two's name</label>
-                <input type="text" id="player2-field" maxlength="20">
+                <label for="player-one-input">Player One's name</label>
+                <input type="text" id="player-one-input" name="player-one-input" maxlength="10" minlength="3" required>
+                <label for="player-two-input">Player Two's name</label>
+                <input type="text" id="player-two-input" name="player-two-input" maxlength="10" minlength="3" required>
                 <button class="submit-btn" type="submit">Start</button>
             </form>
         </div>
-        <div class="play-wrapper">
+        <div class="play-wrapper hidden">
             <div class="playfield">
                 <table class="scoretable">
                     <tr class="table-header">
@@ -46,7 +48,9 @@
                         <td class="score"></td>
                     </tr>
                 </table>
-                <div class="board">
+                <div class="board-wrapper">
+                    <div class="highlighter"></div>
+                    <div class="board"></div>
                 </div>
                 <div class="announcer">default</div>
             </div>
