@@ -152,15 +152,15 @@ input, button {
 }
 
 .crossline.row-1 {
-    top: calc(100% / 3 / 2 - var(--crossline-height) / 2);
+    top: calc(100% / 3 / 2 - var(--crossline-height));
 }
 
 .crossline.row-2 {
-    top: calc((100% / 3 / 2 - var(--crossline-height) / 2) * 3);
+    top: calc((100% / 3 / 2 - var(--crossline-height) / 5) * 3);
 }
 
 .crossline.row-3 {
-    top: calc((100% / 3 / 2) * 5);
+    top: calc((100% / 3 / 2) * 5 - var(--crossline-height) / 5);
 }
 
 .crossline.col {
