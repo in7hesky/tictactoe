@@ -2,7 +2,7 @@
 
 import board from "./board.js"
 import playerFactory from "./playerFactory.js"
-import controllerFactory from "./controllerFactory.js"
+import controller from "./controller.js"
 import modal from "./modal.js"
 
 modal.setup()
@@ -10,8 +10,9 @@ modal.setup()
 const initApp = (playerOneName, playerTwoName) => {
     const players = [playerFactory(playerOneName, "x"), playerFactory(playerTwoName, "o")]
 
-    const controller = controllerFactory(players, board)
-    
+    controller.setPlayers(players)
+    controller.setBoard(board)
+
     board.setup()
     controller.linkKeys()
 }

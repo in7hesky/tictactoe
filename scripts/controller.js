@@ -1,10 +1,10 @@
 import scoretable from "./scoretable.js"
 import display from "./display.js"
 
-const controller = (players, board) => {
+const controller = (() => {
     let currentPlayerIndex = 0
 
-    scoretable.setup(players)
+    let players, board
 
     const linkKeys = () => {
         board.getCellNodes().forEach(node => {
@@ -12,6 +12,13 @@ const controller = (players, board) => {
             node.classList.add("active")
         })
     }
+
+    const setPlayers = (playersArray) => {
+        players = playersArray
+        scoretable.setup(players)
+    }
+
+    const setBoard = (b) => board = b
 
     const keyHandler = (e) => {
         const status = board.markCell(e.target.getAttribute("data-index"), 
@@ -50,7 +57,7 @@ const controller = (players, board) => {
         linkKeys()
     }
 
-    return {linkKeys}
-};
+    return {linkKeys, setPlayers, setBoard}
+})();
 
 export default controller
