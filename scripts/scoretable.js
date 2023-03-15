@@ -21,13 +21,8 @@ const scoretable = (() => {
     }
 
     const toggleCurrentPlayer = () => {
-        if (playerOneRow.classList.contains(CURRENT_CLASS)) {
-            playerOneRow.classList.remove(CURRENT_CLASS)
-            playerTwoRow.classList.add(CURRENT_CLASS)
-        } else {
-            playerTwoRow.classList.remove(CURRENT_CLASS)
-            playerOneRow.classList.add(CURRENT_CLASS)
-        }
+        playerTwoRow.classList.toggle(CURRENT_CLASS)
+        playerOneRow.classList.toggle(CURRENT_CLASS)
     }
 
     return {updateScore, toggleCurrentPlayer, setup}

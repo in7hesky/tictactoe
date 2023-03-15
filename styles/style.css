@@ -1,6 +1,8 @@
 :root {
     --header-height: 10vh;
     --cell-dimension: 200px;
+    --crossline-height: 10px;
+    --sqrt--2: 1.4;
 }
 
 *, *::before, *::after {
@@ -133,6 +135,61 @@ input, button {
     transition: all 0.1s;
 }
 
+.crossline {
+    position: absolute;
+    background-color: red;
+    height: 10px;
+    width: 100%;
+    top: 0;
+    transition: opacity 0.1s;
+    opacity: 1;
+    z-index: 1
+}
+
+.crossline.hidden {
+    opacity: 0;
+    z-index: -1
+}
+
+.crossline.row-1 {
+    top: calc(100% / 3 / 2 - var(--crossline-height) / 2);
+}
+
+.crossline.row-2 {
+    top: calc((100% / 3 / 2 - var(--crossline-height) / 2) * 3);
+}
+
+.crossline.row-3 {
+    top: calc((100% / 3 / 2) * 5);
+}
+
+.crossline.col {
+    transform: rotate(90deg);
+    top: calc(100% / 2 - var(--crossline-height) / 2);
+}
+
+.crossline.col-1 {
+    left: calc(-100% / 3  - var(--crossline-height) / 4);
+}
+
+.crossline.col-3 {
+    left: calc(100% / 3  + var(--crossline-height) / 4);
+}
+
+.crossline.diag {
+    top: calc(50% - var(--crossline-height) / 2);
+    width: calc(100% * var(--sqrt--2));
+    left: -20%;
+}
+
+.crossline.diag-1 {
+    transform: rotate(45deg);
+}
+
+.crossline.diag-2 {
+    transform: rotate(-45deg);
+}
+
 .cell.active {
     cursor: pointer;
 }
@@ -195,6 +252,8 @@ th.score {
 .announcer.open {
     opacity: 1;
 }
+
+
 
 @media (max-width: 1020px) {
     :root {

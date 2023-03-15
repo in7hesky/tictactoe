@@ -11,13 +11,8 @@ const modal = (() => {
         const modal = document.querySelector(".modal-wrapper")
         const playfield = document.querySelector(".play-wrapper")
 
-        if (modal.classList.contains("hidden")) {
-            modal.classList.remove("hidden")
-            playfield.classList.add("hidden")
-        } else {
-            modal.classList.add("hidden")
-            playfield.classList.remove("hidden")
-        }
+        modal.classList.toggle("hidden")
+        playfield.classList.toggle("hidden")
     }
 
     const submitHandler = (e) => {

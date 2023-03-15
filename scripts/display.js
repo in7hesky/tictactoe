@@ -21,11 +21,7 @@ const display = (() => {
     }
 
     const toggleVisibility = () => {
-        if (announcerNode.classList.contains("open")) {
-            announcerNode.classList.remove("open")
-        } else {
-            announcerNode.classList.add("open")
-        }
+        announcerNode.classList.toggle("open")
     }
 
     return {showResult, toggleVisibility}
