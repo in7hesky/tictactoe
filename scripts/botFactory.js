@@ -8,9 +8,7 @@ const botFactory = (name, symbol) => {
 
         const targetCellIndex = getRandomNumber(0, freeCells.length)
 
-        board.getCellNodes()[freeCells[targetCellIndex]].click()
-
-        
+        board.getCellNodes()[freeCells[targetCellIndex]].click()  
     }
 
     const getFreeCells = (cells) => {
@@ -23,6 +21,8 @@ const botFactory = (name, symbol) => {
     }
 
     const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min)
+
+    const checkWin = (cells) => {}
     
 
     return {

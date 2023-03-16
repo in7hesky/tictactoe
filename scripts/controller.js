@@ -26,7 +26,7 @@ const controller = (() => {
         e.target.classList.remove("active")
 
         if (status >= 0) {
-            if (status === 1) players[currentPlayerIndex].addScore()
+            if (status > 0) players[currentPlayerIndex].addScore()
             display.showResult(status, players[currentPlayerIndex])
             scoretable.updateScore(players)
             toggleFreeze()

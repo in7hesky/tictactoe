@@ -6,6 +6,35 @@ const crossline = (() => {
         line.className = "crossline hidden"
     }
 
+    const drawVerdict = (verdict) => {
+        switch(verdict) {
+            case 1:
+                drawRow(1)
+                break;
+            case 2:
+                drawRow(2)
+                break;
+            case 3:
+                drawRow(3)
+                break;
+            case 4:
+                drawCol(1)
+                break;
+            case 5:
+                drawCol(2)
+                break;
+            case 6:
+                drawCol(3)
+                break;
+            case 7:
+                drawDiagonal(1)
+                break;
+            case 8:
+                drawDiagonal(2)
+                break;
+        }
+    }
+
     const drawDiagonal = (num) => {
         if (num !== 1 && num !== 2) throw ERROR_MESSAGE
         line.classList.add("diag", `diag-${num}`)
@@ -28,7 +57,7 @@ const crossline = (() => {
         line.classList.toggle("hidden")
     }
 
-    return {drawDiagonal, drawRow, drawCol, setup}
+    return {drawVerdict, setup}
 })();
 
 export default crossline
