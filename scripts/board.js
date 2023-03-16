@@ -46,7 +46,16 @@ const board = (() => {
 
     const getCells = () => cells
 
-    return {setup, markCell, getCellNodes, getEmptyCellNodes, getCells}
+    const getFreeCells = () => {
+        const freeIndices = []
+
+        for (let i = 0; i < cells.length; i++) 
+            if (cells[i] === null) freeIndices.push(i)
+        
+        return freeIndices
+    }
+
+    return {setup, markCell, getCellNodes, getEmptyCellNodes, getCells, getFreeCells}
 })();
 
 export default board
