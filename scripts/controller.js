@@ -29,7 +29,7 @@ const controller = (() => {
             if (status === 1) players[currentPlayerIndex].addScore()
             display.showResult(status, players[currentPlayerIndex])
             scoretable.updateScore(players)
-            freeze()
+            toggleFreeze()
             setTimeout(refreshAll, 3000)
             return
         }
@@ -37,15 +37,22 @@ const controller = (() => {
         togglePlayer()
     }
 
-    const freeze = () => {
-        board.getCellNodes().forEach(node => {
-            node.removeEventListener("click", keyHandler)
-            node.classList.remove("active")
+    const toggleFreeze = () => {
+        board.getEmptyCellNodes().forEach(node => {
+            node.classList.toggle("active")
+            if (node.classList.contains("active")) {
+                node.addEventListener("click", keyHandler)
+            } else {
+                node.removeEventListener("click", keyHandler)
+            }
         })
     }
 
     const togglePlayer = () => {
         currentPlayerIndex = currentPlayerIndex === 1 ? 0 : 1
+        if (players[currentPlayerIndex].getName() === "bot") {
+            players[currentPlayerIndex].takeTurn(board)
+        }
     }
 
     const refreshAll = () => {

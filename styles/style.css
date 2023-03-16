@@ -63,6 +63,24 @@ table, tr, td, th {
     font-size: 1.5rem;
 }
 
+.checkbox-wrapper {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+.bot-checkbox {
+    transform: scale(1.5);
+    align-self: center;
+    box-shadow: none;
+    cursor: pointer;
+    accent-color: grey;
+}
+
+.modal-message {
+    font-size: 0.5em;
+    color: red;
+}
+
 .submit-btn {
     transition: all 0.08s;
     background-color:rgb(245, 245, 245)

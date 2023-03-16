@@ -21,6 +21,10 @@ const board = (() => {
         return document.querySelectorAll(".cell")
     }
 
+    const getEmptyCellNodes = () => {
+        return Array.from(getCellNodes()).filter((node) => node.innerHTML === "")
+    }
+
     const checkWin = () => {
         if (cells[0] !== null && cells[1] === cells[0] && cells[2] === cells[1]) {
             crossline.drawRow(1)
@@ -67,7 +71,9 @@ const board = (() => {
         }
     }
 
-    return {setup, markCell, getCellNodes}
+    const getCells = () => cells
+
+    return {setup, markCell, getCellNodes, getEmptyCellNodes, getCells}
 })();
 
 export default board
