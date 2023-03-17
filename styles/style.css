@@ -81,6 +81,14 @@ table, tr, td, th {
 .arrow-btn {
     background: none;
     cursor: pointer;
+    transition: all 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-btn:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .arrow-img {
