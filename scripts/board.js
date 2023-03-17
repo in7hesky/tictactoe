@@ -2,10 +2,10 @@ import crossline from "./crossline.js"
 import arbiter from "./arbiter.js"
 
 const board = (() => {
+    const boardNode = document.querySelector(".board")
     let cells
 
     const setup = () => {
-        let boardNode = document.querySelector(".board")
         boardNode.innerHTML = ""
         crossline.setup()
         createCells()
@@ -44,6 +44,8 @@ const board = (() => {
         }
     }
 
+    const getBoardNode = () => {return boardNode}
+
     const getCells = () => cells
 
     const getFreeCells = () => {
@@ -55,7 +57,7 @@ const board = (() => {
         return freeIndices
     }
 
-    return {setup, markCell, getCellNodes, getEmptyCellNodes, getCells, getFreeCells}
+    return {setup, markCell, getCellNodes, getEmptyCellNodes, getCells, getFreeCells, getBoardNode}
 })();
 
 export default board

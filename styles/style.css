@@ -142,6 +142,10 @@ input, button {
     background-color: grey;
 }
 
+.board.noclick {
+    pointer-events: none;
+}
+
 .cell {
     background-color: white;
     width: var(--cell-dimension);

@@ -24,35 +24,27 @@ const controller = (() => {
         const status = board.markCell(e.target.getAttribute("data-index"), 
                     players[currentPlayerIndex].getSymbol())
         e.target.classList.remove("active")
-
-        if (status >= 0) {
-            if (status > 0) players[currentPlayerIndex].addScore()
-            display.showResult(status, players[currentPlayerIndex])
-            scoretable.updateScore(players)
-            toggleFreeze()
-            setTimeout(refreshAll, 3000)
-            return
-        }
+        if (status >= 0) startEndSequence(status)
         scoretable.toggleCurrentPlayer()
         togglePlayer()
     }
 
     const toggleFreeze = () => {
-        board.getEmptyCellNodes().forEach(node => {
-            node.classList.toggle("active")
-            if (node.classList.contains("active")) {
-                node.addEventListener("click", keyHandler)
-            } else {
-                node.removeEventListener("click", keyHandler)
-            }
-        })
+        board.getBoardNode().classList.toggle("noclick")
     }
 
     const togglePlayer = () => {
         currentPlayerIndex = currentPlayerIndex === 1 ? 0 : 1
-        if (players[currentPlayerIndex].getName() === "bot") {
-            players[currentPlayerIndex].takeTurn(board)
-        }
+        if (players[currentPlayerIndex].getName() === "bot")
+            doWhileFrozen(() => players[currentPlayerIndex].takeTurn(board), 350)
+    }
+
+    const startEndSequence = (status) => {
+        if (status > 0) players[currentPlayerIndex].addScore()
+        display.showResult(status, players[currentPlayerIndex])
+        scoretable.updateScore(players)
+        doWhileFrozen(refreshAll, 3000)
+        return
     }
 
     const refreshAll = () => {
@@ -62,6 +54,14 @@ const controller = (() => {
         scoretable.setup(players)
         scoretable.updateScore(players)
         linkKeys()
+    }
+
+    const doWhileFrozen = (callback, frozenTime) => {
+        toggleFreeze()
+        setTimeout(() => {
+            toggleFreeze()
+            callback()
+        }, frozenTime)
     }
 
     return {linkKeys, setPlayers, setBoard}
