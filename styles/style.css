@@ -27,7 +27,7 @@ table, tr, td, th {
 }
 
 .header {
-    height: 10vh;
+    height: var(--header-height);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -262,18 +262,19 @@ input, button {
 
 .scoretable {
     padding: 8px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     position: absolute;
     text-align: left;
     top: 60px;
     right: 5px;
     box-shadow: 1px 1px 2px rgb(209, 209, 209);
     border-spacing: 0px;
+    z-index: 2;
+    min-width: 180px;
 }
 
 .scoretable tr {
     padding: 0 5px 0 5px;
-    min-width: 180px;
 }
 
 .settings-row {
@@ -294,7 +295,7 @@ input, button {
 }
 
 .table-header th {
-    font-size: 1.2rem;
+    font-size: 1em;
     font-weight: 400;
 }
 
@@ -317,6 +318,7 @@ th.score {
 }
 
 .settings-btn {
+    font-size: 0.9em;
     width: 100%;
     text-transform: uppercase;
     cursor: pointer;
@@ -340,7 +342,7 @@ th.score {
 @media (max-width: 1020px) {
     :root {
         --cell-dimension: min(30vw, 20vh);
-    }
+    }    
     .scoretable {
         position: static;
     }
@@ -348,6 +350,35 @@ th.score {
     .playfield {
         justify-content: space-evenly;
         gap: 10px;
-        padding: 0px 0 50px;
+        padding: 0;
+    }
+}
+
+@media (max-height:640px) and (max-aspect-ratio: 3/1) {
+    :root {
+        --cell-dimension: 18vh;
+        --header-height: 13vh;
+    }
+
+    .board {
+        gap: 5px;
+    }
+
+    .cell {
+        font-size: 2.5rem
+    }
+
+    .header {
+        font-size: 5vh;
+    }
+
+    .playfield {
+        padding: 3px 0;
+        justify-content: center;
+    }
+    .scoretable {
+        font-size: 0.6rem;
+        position: absolute;
+        min-width: 90px;
     }
 }
