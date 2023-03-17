@@ -2,7 +2,7 @@ import scoretable from "./scoretable.js"
 import display from "./display.js"
 
 const controller = (() => {
-    let currentPlayerIndex = 0
+    let currentPlayerIndex
 
     let players, board
 
@@ -17,6 +17,7 @@ const controller = (() => {
 
     const setPlayers = (playersArray) => {
         players = playersArray
+        currentPlayerIndex = 0
         scoretable.setup(players)
     }
 
