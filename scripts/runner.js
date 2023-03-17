@@ -6,6 +6,11 @@ import botFactory from "./botFactory.js"
 import controller from "./controller.js"
 import modal from "./modal.js"
 
+const settingsButton = document.querySelector(".settings-btn")
+settingsButton.addEventListener("click", () => {
+    modal.toggleVisibility()
+})
+
 modal.setup()
 
 const initApp = (playerOneData, playerTwoData) => {

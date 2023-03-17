@@ -58,7 +58,7 @@ const modal = (() => {
         markerTwo.innerHTML = buffer
     }
 
-    return {setup}
+    return {setup, toggleVisibility}
 })();
 
 export default modal

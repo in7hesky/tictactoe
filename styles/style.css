@@ -276,6 +276,18 @@ input, button {
     min-width: 180px;
 }
 
+.settings-row {
+    padding: 0 0px 0 0px;
+}
+
+.settings-row td {
+    border-top: 1px solid rgb(230, 230, 230); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3px;
+}
+
 .table-header, .player-one-row, .player-two-row {
     display: flex;
     justify-content: space-between;
@@ -302,6 +314,14 @@ th.score {
 
 .score {
     text-align: right;
+}
+
+.settings-btn {
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: none;
+    color: rgb(95, 95, 95);
 }
 
 .announcer {
