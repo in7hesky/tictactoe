@@ -5,13 +5,20 @@ const modal = (() => {
 
     const form = document.querySelector(".modal")
     const checkbox = document.querySelector(".bot-checkbox")
+
     const playerOneInput = document.querySelector(".player-one-input")
     const playerTwoInput = document.querySelector(".player-two-input")
+
+    const markerOne = document.querySelector(".marker-1")
+    const markerTwo = document.querySelector(".marker-2")
+    const arrowButton = document.querySelector(".arrow-btn")
+
     const modalMessage = document.querySelector(".modal-message")
 
     const setup = () => {
         form.addEventListener("submit", submitHandler)
         checkbox.addEventListener("click", checkboxHandler)
+        arrowButton.addEventListener("click", arrowButtonHandler)
     }
 
     const toggleVisibility = () => {
@@ -34,15 +41,21 @@ const modal = (() => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        const firstName = playerOneInput.value
-        const secondName = playerTwoInput.value
+        const firstPlayerData = [playerOneInput.value, markerOne.innerHTML]
+        const secondPlayerData = [playerTwoInput.value, markerTwo.innerHTML]
 
-        if (firstName.toUpperCase() === secondName.toUpperCase()) {
+        if (firstPlayerData[0].toUpperCase() === secondPlayerData[0].toUpperCase()) {
             modalMessage.innerHTML = UNIQUE_NAMES_MESSAGE 
         } else {
-            initApp(firstName, secondName)
+            initApp(firstPlayerData, secondPlayerData)
             toggleVisibility()
         }
+    }
+
+    const arrowButtonHandler = (e) => {
+        let buffer = markerOne.innerHTML
+        markerOne.innerHTML = markerTwo.innerHTML
+        markerTwo.innerHTML = buffer
     }
 
     return {setup}

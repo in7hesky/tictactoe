@@ -24,7 +24,10 @@ const controller = (() => {
         const status = board.markCell(e.target.getAttribute("data-index"), 
                     players[currentPlayerIndex].getSymbol())
         e.target.classList.remove("active")
-        if (status >= 0) startEndSequence(status)
+        if (status >= 0) {
+            startEndSequence(status)
+            return
+        }
         scoretable.toggleCurrentPlayer()
         togglePlayer()
     }
@@ -44,7 +47,6 @@ const controller = (() => {
         display.showResult(status, players[currentPlayerIndex])
         scoretable.updateScore(players)
         doWhileFrozen(refreshAll, 3000)
-        return
     }
 
     const refreshAll = () => {

@@ -28,9 +28,18 @@
         <div class="modal-wrapper">
             <form class="modal">
                 <label for="player-one-input">Player One's name</label>
-                <input type="text" id="player-one-input" name="player-one-input" class="player-one-input" maxlength="10" minlength="4" required>
-                <label for="player-two-input">Player Two's name</label>
-                <input type="text" id="player-two-input" name="player-two-input" class="player-two-input" maxlength="10" minlength="4" required>
+                <div class="input-wrapper">
+                    <input type="text" id="player-one-input" name="player-one-input" class="player-one-input" maxlength="10" minlength="4" required>
+                    <div class="marker marker-1">x</div>
+                </div>
+                <div class="label-wrapper">
+                    <label for="player-two-input">Player Two's name</label>
+                    <button type="button" class="arrow-btn"><img class="arrow-img" src="../icons/double-arrow.svg" alt="double-arrow"></button>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="player-two-input" name="player-two-input" class="player-two-input" maxlength="10" minlength="4" required>
+                    <div class="marker marker-2">o</div>
+                </div>
                 <div class="checkbox-wrapper">
                     <label for="bot-checkbox">BOT</label>
                     <input type="checkbox" id="bot-checkbox" name="bot-checkbox" class="bot-checkbox">

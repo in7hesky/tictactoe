@@ -8,14 +8,14 @@ import modal from "./modal.js"
 
 modal.setup()
 
-const initApp = (playerOneName, playerTwoName) => {
-    // const players = [playerFactory(playerOneName, "x"), playerFactory(playerTwoName, "o")]
-    const players = [playerFactory(playerOneName, "x"), botFactory(playerTwoName, "o")]
+const initApp = (playerOneData, playerTwoData) => {
+    let firstPlayer = playerFactory(playerOneData[0], playerOneData[1])
+    let secondPlayer = playerTwoData[0] === "bot" ? botFactory(playerTwoData[0], playerTwoData[1]) 
+                        : playerFactory(playerTwoData[0], playerTwoData[1])
     
-    controller.setPlayers(players)
     controller.setBoard(board)
-
     board.setup()
+    controller.setPlayers([firstPlayer, secondPlayer])
     controller.linkKeys()
 }
 
