@@ -66,8 +66,8 @@ const controller = (() => {
     const doWhileFrozen = (callback, frozenTime) => {
         toggleFreeze()
         setTimeout(() => {
-            toggleFreeze()
             callback()
+            toggleFreeze()
         }, frozenTime)
     }
 
