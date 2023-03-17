@@ -11,6 +11,8 @@ const controller = (() => {
             node.addEventListener("click", keyHandler, {once: true})
             node.classList.add("active")
         })
+
+        if (players[0].getSymbol() === "o") togglePlayer()
     }
 
     const setPlayers = (playersArray) => {
@@ -28,7 +30,6 @@ const controller = (() => {
             startEndSequence(status)
             return
         }
-        scoretable.toggleCurrentPlayer()
         togglePlayer()
     }
 
@@ -37,9 +38,12 @@ const controller = (() => {
     }
 
     const togglePlayer = () => {
+        scoretable.toggleCurrentPlayer()
         currentPlayerIndex = currentPlayerIndex === 1 ? 0 : 1
         if (players[currentPlayerIndex].getName() === "bot")
-            doWhileFrozen(() => players[currentPlayerIndex].takeTurn(board), 350)
+            doWhileFrozen(() => {
+                players[currentPlayerIndex].takeTurn(board)
+            }, 350)
     }
 
     const startEndSequence = (status) => {
